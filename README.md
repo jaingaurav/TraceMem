@@ -27,7 +27,9 @@ Now we need to build the TraceMem library
 At this point you have everything to compile programs with TraceMem instrumentation. The samples directory contains some example programs that can be compiled as follows:
 
 clang++ series.cpp -S -emit-llvm -o series.ll
+
 opt -mem2reg -load ../../TraceMem-build/Release+Asserts/lib/LLVMTraceMem.dylib -stats -TraceMem series.ll -o series.bc
+
 clang++ series.bc -L../../libtracemem-build/ -lTraceMem -o series
 
 Upon program terminatation the memory traces are written to a file.
